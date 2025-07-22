@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description"
+        content="VERLACE – Discover timeless luxury crafted with precision and passion. Sign in or create an account to explore our premium collection.">
+    <meta name="author" content="VERLACE">
+    <title>VERLACE | Login</title>
+
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Poppins:wght@400;600&display=swap"
+        rel="stylesheet" />
+
+    <!-- External CSS -->
+    <link rel="stylesheet" href="/stylesheets/index.css" />
+</head>
+
+<body>
+    <%if(error.length>0){%>
+
+        <div class="error">
+            <span>
+                <%=error%>
+            </span>
+        </div>
+
+        <%}%>
+            <!-- Hero Welcome Section -->
+            <section class="hero">
+                <h1 class="brand">Welcome to <span>VERLACE</span></h1>
+                <p class="tagline">Discover timeless luxury crafted with precision and passion.</p>
+            </section>
+
+            <!-- Auth Container -->
+            <section class="container">
+                <!-- Login Form -->
+                <div class="form-box login">
+                    <h2 class="title">Welcome Back</h2>
+                    <form method="POST" action="/users/login">
+                        <input type="email" name="email" placeholder="Email" required />
+                        <input type="password" name="password" placeholder="Password" required />
+                        <button type="submit">Login</button>
+                    </form>
+                </div>
+
+                <!-- Signup Form -->
+                <div class="form-box signup">
+                    <h2 class="title">Create Account</h2>
+                    <form method="POST" action="/users/register">
+                        <input type="text" name="fullname" placeholder="Full Name" required />
+                        <input type="email" name="email" placeholder="Email" required />
+                        <input type="password" name="password" placeholder="Password" required />
+
+                        <button type="submit">Sign Up</button>
+                    </form>
+                </div>
+            </section>
+</body>
+
+</html>

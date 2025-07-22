@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-mongoose.connect('mongodb://127.0.0.1:27017/TCC');
+
 
 const userSchema = mongoose.Schema({
     fullname: String,
@@ -9,7 +9,7 @@ const userSchema = mongoose.Schema({
         type: Array,
         default: []
     },
-    isadmin: Boolean,
+    // isadmin: Boolean,
     orders: {
         type: Array,
         default: []

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>VERLACE | Shop</title>
+    <link rel="stylesheet" href="/stylesheets/shop.css" />
+</head>
+
+<body>
+    <div class="shop-container">
+
+        <!-- Hero Section -->
+        <section class="hero">
+            <h1 class="hero-title">Timeless Elegance, Redefined</h1>
+            <p class="hero-subtitle">
+                Explore our premium collection — curated with craftsmanship and a passion for luxury.
+            </p>
+        </section>
+
+        <div class="shop-content">
+
+            <!-- Sidebar -->
+            <aside class="sidebar">
+                <h2>Filters</h2>
+
+                <div class="filter-block">
+                    <label for="sort">Sort by</label>
+                    <select id="sort">
+                        <option>Popular</option>
+                        <option>Price: Low to High</option>
+                        <option>Price: High to Low</option>
+                    </select>
+                </div>
+
+                <div class="filter-block">
+                    <h3>Categories</h3>
+                    <ul>
+                        <li>New Collection</li>
+                        <li>All Products</li>
+                        <li>Discounted</li>
+                    </ul>
+                </div>
+
+                <div class="filter-block">
+                    <h3>Filter by</h3>
+                    <ul>
+                        <li>Availability</li>
+                        <li>Discount</li>
+                    </ul>
+                </div>
+            </aside>
+
+            <!-- Products Grid -->
+            <main class="product-grid">
+                <% for(let i=0; i < 8; i++) { %>
+                    <div class="product-card">
+                        <div class="product-img"></div>
+                        <div class="product-details">
+                            <div class="text">
+                                <h3>Clinge Bag</h3>
+                                <p>₹1200</p>
+                            </div>
+                            <button class="add-btn">+</button>
+                        </div>
+                    </div>
+                    <% } %>
+            </main>
+
+        </div>
+    </div>
+</body>
+
+</html>
