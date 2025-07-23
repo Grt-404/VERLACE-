@@ -1,10 +1,13 @@
 const mongoose = require('mongoose');
 
 const productSchema = mongoose.Schema({
-    image: String,
+    image: {
+        type: Buffer,
+        default: "/public/images/uploads/default.jpg"
+    },
     name: String,
     price: Number,
-    dicount: {
+    discount: {
         type: Number,
         default: 0
     },

@@ -9,8 +9,26 @@
 </head>
 
 <body>
-    <div class="shop-container">
+    <% if (success.length > 0) { %>
+        <div class="success">
+            <span><%= success %></span>
+        </div>
+    <% } %>
 
+    <!-- Header / Navbar -->
+    <header class="topbar">
+        <div class="logo">
+            <a href="/" class="brand-name">VERLACE</a>
+        </div>
+        <nav class="nav-links">
+            <a href="/shop">Shop</a>
+            <a href="/cart">Cart</a>
+            <a href="/account">My Account</a>
+            <a href="/users/logout">Logout</a>
+        </nav>
+    </header>
+
+    <div class="shop-container">
         <!-- Hero Section -->
         <section class="hero">
             <h1 class="hero-title">Timeless Elegance, Redefined</h1>
@@ -19,6 +37,7 @@
             </p>
         </section>
 
+        <!-- Shop Content -->
         <div class="shop-content">
 
             <!-- Sidebar -->
@@ -52,20 +71,28 @@
                 </div>
             </aside>
 
-            <!-- Products Grid -->
+            <!-- Product Grid -->
             <main class="product-grid">
-                <% for(let i=0; i < 8; i++) { %>
-                    <div class="product-card">
-                        <div class="product-img"></div>
-                        <div class="product-details">
-                            <div class="text">
-                                <h3>Clinge Bag</h3>
-                                <p>₹1200</p>
-                            </div>
-                            <button class="add-btn">+</button>
+                <% products.forEach(product => { %>
+                    <div class="product-card" style="background-color: <%= product.panelcolor %>;">
+                        <div class="product-img" style="background-color: <%= product.bgcolor %>;">
+                            <img 
+                                src="data:image/jpeg;base64,<%= product.image.toString('base64') %>" 
+                                alt="<%= product.name %>" 
+                                style="width: 100%; height: 100%; object-fit: cover; border-radius: 12px;">
                         </div>
+                       <div class="product-details">
+    <div class="text" style="color: <%= product.textcolor %>;">
+        <h3><%= product.name %></h3>
+        <p style="color: <%= product.textcolor %>;">&#8377;<%= product.price %></p>
+    </div>
+    <a class="add-btn" href="/addToCart/<%= product._id %>">
+        <span>+</span>
+    </a>
+</div>
+
                     </div>
-                    <% } %>
+                <% }) %>
             </main>
 
         </div>
