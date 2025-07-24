@@ -2,6 +2,7 @@ const userModel = require('../models/user-model');
 const bcrypt = require('bcrypt');
 const { generateToken } = require('../utils/generateToken');
 
+
 module.exports.registerUser = async function (req, res) {
     try {
 
@@ -58,4 +59,12 @@ module.exports.loginUser = async function (req, res) {
 module.exports.logout = async function (req, res) {
     res.cookie("token", "");
     res.redirect('/')
+}
+module.exports.myAccount = async function (req, res) {
+    let { fullname, email, contact, picture } = req.user;
+    let user = await userModel.findOne({ email: req.user.email }).populate("cart");
+    user.cart.forEach((cartItem) => {
+        user.orders.push(cartItem);
+    });
+    res.render("Account", { fullname, email, contact, picture, user });
 }

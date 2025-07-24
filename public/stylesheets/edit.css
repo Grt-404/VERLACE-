@@ -1,0 +1,132 @@
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Georgia', serif;
+    background-color: #fefaf5;
+    color: #222;
+    line-height: 1.6;
+}
+
+/* Header */
+.main-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px;
+    background-color: #fff;
+    border-bottom: 1px solid #eee;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+.nav-links a {
+    margin-left: 24px;
+    text-decoration: none;
+    color: #444;
+    font-size: 15px;
+    transition: 0.3s;
+}
+
+.nav-links a:hover {
+    color: #000;
+    text-decoration: underline;
+}
+
+/* Container */
+.edit-container {
+    max-width: 1000px;
+    margin: 40px auto;
+    padding: 0 24px;
+    display: flex;
+    gap: 40px;
+    flex-wrap: wrap;
+}
+
+/* Info Card */
+.user-info-card,
+.user-edit-card {
+    flex: 1;
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 14px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.05);
+    min-width: 300px;
+}
+
+.user-info-card h2,
+.user-edit-card h2 {
+    font-size: 22px;
+    margin-bottom: 20px;
+}
+
+.info-group {
+    font-size: 16px;
+    margin: 12px 0;
+}
+
+/* Form Styles */
+.edit-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group label {
+    font-size: 14px;
+    margin-bottom: 6px;
+    color: #444;
+}
+
+.form-group input {
+    padding: 10px 16px;
+    font-size: 15px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #fafafa;
+    transition: border 0.3s ease;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: #000;
+    background-color: #fff;
+}
+
+.submit-btn {
+    padding: 12px 20px;
+    background-color: #222;
+    color: #fff;
+    font-size: 15px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.submit-btn:hover {
+    background-color: #333;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .edit-container {
+        flex-direction: column;
+    }
+}

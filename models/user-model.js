@@ -15,7 +15,10 @@ const userSchema = mongoose.Schema({
         default: []
     },
     contact: Number,
-    picture: String
+    image: {
+        type: Buffer,
+        required: false
+    },
 
 })
 module.exports = mongoose.model("user", userSchema);

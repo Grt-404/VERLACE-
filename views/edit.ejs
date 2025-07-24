@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VERLACE | Edit Profile</title>
+  <link rel="stylesheet" href="/stylesheets/edit.css">
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="main-header">
+    <div class="logo">VERLACE</div>
+    <nav class="nav-links">
+      <a href="/shop">Shop</a>
+      <a href="/cart">Cart</a>
+      <a href="/users/myAccount">My Account</a>
+      <a href="/logout">Logout</a>
+    </nav>
+  </header>
+
+  <div class="edit-container">
+
+    <!-- USER INFO -->
+    <div class="user-info-card">
+      <h2>Current Information</h2>
+      <p class="info-group"><strong>Name:</strong> <%= user.fullname %></p>
+      <p class="info-group"><strong>Email:</strong> <%= user.email %></p>
+      <% if(user.contact){ %>
+      <p class="info-group"><strong>Phone:</strong> <%= user.contact %></p>
+      <% } %>
+    </div>
+
+    <!-- USER EDIT FORM -->
+    <div class="user-edit-card">
+      <h2>Update Details</h2>
+      <form action="/users/edit" method="POST" class="edit-form">
+        <div class="form-group">
+          <label for="new-name">Name</label>
+          <input id="new-name" name="fullname" type="text" placeholder="Enter new name">
+        </div>
+
+        <div class="form-group">
+          <label for="new-email">Email</label>
+          <input id="new-email" name="email" type="text" placeholder="Enter new email">
+        </div>
+
+        <div class="form-group">
+          <label for="new-contact">Phone</label>
+          <input id="new-contact" name="contact" type="text" placeholder="Enter new contact number">
+        </div>
+
+        <button type="submit" class="submit-btn">Change Details</button>
+      </form>
+    </div>
+
+  </div>
+</body>
+</html>
