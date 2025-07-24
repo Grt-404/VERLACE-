@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>VERLACE - Conscious Luxury</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Inter:wght@400;500;600&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'brand-cream': '#FFFBF5',
+                        'brand-petal': '#F2E6E0',
+                        'brand-gold': '#BBA14F',
+                        'brand-bark': '#5E503F',
+                        'brand-midnight': '#1C1C1C',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Cormorant Garamond', 'serif'],
+                        display: ['Playfair Display', 'serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: theme('fontFamily.sans');
+            background-color: theme('colors.brand-cream');
+            color: theme('colors.brand-bark');
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        .font-display { font-family: theme('fontFamily.display'); }
+        
+        /* Base Button Styles */
+        .btn {
+            display: inline-block;
+            padding: 14px 36px;
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            transition: all 0.4s ease;
+            text-align: center;
+            border: 1px solid transparent;
+        }
+        
+        /* Animations & Hovers */
+        .product-card-image img {
+            transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        .group:hover .product-card-image img {
+            transform: scale(1.08);
+        }
+
+        .category-circle-inner {
+            transition: background-color 0.4s ease;
+        }
+        .category-circle:hover .category-circle-inner {
+            background-color: theme('colors.brand-gold');
+        }
+        .category-circle:hover h3 {
+            color: #ffffff;
+        }
+        .category-circle h3 {
+            transition: color 0.4s ease;
+        }
+        .category-circle img {
+             transition: transform 0.4s ease, filter 0.4s ease;
+             filter: brightness(1);
+        }
+        .category-circle:hover img {
+            transform: scale(1.05);
+            filter: brightness(1.1);
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 1.2s ease-out, transform 1.2s ease-out;
+        }
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .hero-slide {
+            transition: opacity 1.5s ease-in-out;
+        }
+    </style>
+</head>
+<body class="bg-brand-cream">
+<% if (success.length > 0) { %>
+  <div style="background-color: #e6ffed; color: #276749; padding: 12px 20px; border: 1px solid #a3f0c1; border-radius: 8px; margin: 15px 0; font-family: 'Georgia', serif; font-size: 16px; font-style: italic; font-weight: bold; box-shadow: 0 2px 6px rgba(0,0,0,0.1); letter-spacing: 0.5px;">
+    <span><%= success %></span>
+  </div>
+<% } %>
+
+
+    <div class="bg-gradient-to-b from-brand-petal via-brand-cream to-brand-cream">
+        <!-- Header -->
+        <header class="fixed w-full z-30 bg-brand-cream/80 backdrop-blur-lg border-b border-brand-petal">
+            <div class="max-w-7xl mx-auto px-6 h-20 flex justify-between items-center">
+                <nav class="hidden md:flex flex-1 justify-start space-x-10 text-sm uppercase tracking-widest">
+                    <a href="/explore" class="hover:text-brand-gold transition">Collections</a>
+                    <a href="/philosophy" class="hover:text-brand-gold transition">Philosophy</a>
+                </nav>
+                <div class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
+                     <a href="/" class="text-3xl font-serif tracking-wide text-brand-bark">VERLACE</a>
+                </div>
+                <nav class="hidden md:flex flex-1 justify-end space-x-10 text-sm uppercase tracking-widest">
+                     <a href="/journal" class="hover:text-brand-gold transition">Journal</a>
+                     <a href="/explore" class="hover:text-brand-gold transition">Login</a>
+                </nav>
+                <div class="md:hidden flex-1 justify-end text-right">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+                </div>
+            </div>
+        </header>
+
+        <main>
+            <!-- Hero Slider -->
+            <section class="h-screen relative pt-20 overflow-hidden" id="hero-slider">
+                <!-- Slide 1 -->
+                <div class="hero-slide absolute inset-0 w-full h-full">
+                    <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('https://4kwallpapers.com/images/wallpapers/emma-watson-3840x2160-14472.jpg');"></div>
+                    <div class="absolute inset-0 bg-brand-bark/40"></div>
+                    <div class="relative z-10 h-full flex flex-col items-center justify-center text-white text-center px-6">
+                        <h1 class="text-6xl md:text-8xl font-display mb-6 leading-tight">Modern Heirlooms</h1>
+                        <p class="text-lg md:text-xl max-w-2xl mx-auto font-serif">Consciously crafted. Intentionally designed.</p>
+                        <a href="/explore" class="btn bg-brand-gold text-white hover:bg-white hover:text-brand-gold border-brand-gold mt-8">Shop The Collection</a>
+                    </div>
+                </div>
+                <!-- Slide 2 -->
+                <div class="hero-slide absolute inset-0 w-full h-full opacity-0">
+                    <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('https://fashionweekdaily.com/wp-content/uploads/2019/05/BAL_SSK01_040_079_2_FINAL_2_1920x1080-TWIST-1.jpg');"></div>
+                    <div class="absolute inset-0 bg-brand-bark/40"></div>
+                    <div class="relative z-10 h-full flex flex-col items-center justify-center text-white text-center px-6">
+                        <h1 class="text-6xl md:text-8xl font-display mb-6 leading-tight">Artistry in Hand</h1>
+                        <p class="text-lg md:text-xl max-w-2xl mx-auto font-serif">Discover the stories woven into every stitch.</p>
+                        <a href="/philosophy" class="btn bg-brand-gold text-white hover:bg-white hover:text-brand-gold border-brand-gold mt-8">Our Philosophy</a>
+                    </div>
+                </div>
+
+                <!-- Slider Navigation -->
+                <button id="prev-slide" class="absolute z-20 left-4 md:left-10 top-1/2 -translate-y-1/2 w-12 h-12 text-white/70 hover:text-white transition"><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="15 18 9 12 15 6"></polyline></svg></button>
+                <button id="next-slide" class="absolute z-20 right-4 md:right-10 top-1/2 -translate-y-1/2 w-12 h-12 text-white/70 hover:text-white transition"><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="9 18 15 12 9 6"></polyline></svg></button>
+            </section>
+
+            <!-- As Seen In Section -->
+            <section class="py-16">
+                <div class="container mx-auto px-6 fade-in">
+                    <p class="text-center text-sm uppercase tracking-widest text-brand-bark/50 mb-6">As Seen In</p>
+                    <div class="flex justify-center items-center space-x-8 md:space-x-12 grayscale opacity-40">
+                        <img src="https://placehold.co/100x30/000000/FFF?text=VOGUE" alt="Vogue logo">
+                        <img src="https://placehold.co/120x30/000000/FFF?text=Harper's+BAZAAR" alt="Harper's Bazaar logo" class="hidden sm:block">
+                        <img src="https://placehold.co/80x30/000000/FFF?text=ELLE" alt="Elle logo">
+                        <img src="https://placehold.co/110x30/000000/FFF?text=FORBES" alt="Forbes logo" class="hidden sm:block">
+                    </div>
+                </div>
+            </section>
+
+            <!-- Collections -->
+            <section id="collections" class="py-24 md:py-32 px-6">
+                <div class="max-w-4xl mx-auto text-center mb-16 fade-in">
+                    <h2 class="text-5xl md:text-6xl font-display mb-4">The Signature Edit</h2>
+                    <p class="text-base md:text-lg text-brand-bark/80 font-serif">A celebration of timeless design and bold craftsmanship.</p>
+                </div>
+                <div class="max-w-7xl mx-auto grid md:grid-cols-3 gap-8 md:gap-12">
+                    <!-- Product 1 -->
+                    <div class="group text-center fade-in" style="transition-delay: 100ms;">
+                        <a href="/explore" class="block product-card-image bg-brand-petal h-[520px] overflow-hidden">
+                            <img src="https://www.alberttusk.com/cdn/shop/products/The_Large_Leather_Tote_In_Black-23.jpg?v=1682850588" alt="The 'Aethel' Tote" class="w-full h-full object-cover">
+                        </a>
+                        <div class="mt-5"><h3 class="text-2xl font-serif text-brand-bark">The 'Aethel' Tote</h3><p class="text-brand-bark/70 mt-1">₹ 45,000</p></div>
+                    </div>
+                    <!-- Product 2 -->
+                    <div class="group text-center fade-in" style="transition-delay: 200ms;">
+                        <a href="/explore" class="block product-card-image bg-brand-petal h-[520px] overflow-hidden">
+                            <img src="https://t4.ftcdn.net/jpg/02/71/95/41/360_F_271954181_IOHN11K4MddPrz7AEVdSudb15inc0Yk8.jpg" alt="The 'Clara' Crossbody" class="w-full h-full object-cover">
+                        </a>
+                        <div class="mt-5"><h3 class="text-2xl font-serif text-brand-bark">The 'Clara' Crossbody</h3><p class="text-brand-bark/70 mt-1">₹ 32,500</p></div>
+                    </div>
+                    <!-- Product 3 -->
+                    <div class="group text-center fade-in" style="transition-delay: 300ms;">
+                        <a href="/explore" class="block product-card-image bg-brand-petal h-[520px] overflow-hidden">
+                            <img src="https://www.linvelles.com/cdn/shop/articles/Louis_Vuitton_-_Linvelles.jpg?v=1696774913" alt="The 'Seraphina' Clutch" class="w-full h-full object-cover">
+                        </a>
+                        <div class="mt-5"><h3 class="text-2xl font-serif text-brand-bark">The 'Seraphina' Clutch</h3><p class="text-brand-bark/70 mt-1">₹ 58,000</p></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Philosophy -->
+            <section id="philosophy" class="py-24 md:py-32">
+                <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-16 px-6 items-center">
+                    <div class="fade-in h-[520px] bg-brand-petal overflow-hidden">
+                        <img src="https://www.swish-swank.com/cdn/shop/products/premium-eve-leather-tote-bag-21-365958.png?v=1743754612&width=1445" class="w-full h-full object-cover">
+                    </div>
+                    <div class="fade-in" style="transition-delay: 150ms;">
+                        <h2 class="text-5xl md:text-6xl font-display mb-6">Fewer, Better Things</h2>
+                        <p class="text-lg text-brand-bark/80 leading-relaxed font-serif">Rooted in sustainability and crafted by skilled women artisans, VERLACE handbags are more than accessories — they are heirlooms of purpose and intention.</p>
+                        <a href="/process" class="btn bg-transparent text-brand-bark border border-brand-bark hover:bg-brand-bark hover:text-white mt-8">Explore the Process</a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Shop by Style -->
+            <section class="py-24 md:py-32">
+                <div class="container mx-auto px-6">
+                    <div class="text-center mb-16 fade-in"><h2 class="text-5xl md:text-6xl font-display">Shop by Style</h2></div>
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-8">
+                        <a href="/explore" class="category-circle text-center group fade-in" style="transition-delay: 100ms;">
+                            <div class="relative w-48 h-48 md:w-64 md:h-64 mx-auto rounded-full overflow-hidden bg-brand-petal">
+                                <div class="category-circle-inner absolute inset-0 opacity-70"></div>
+                                <img src="https://media.istockphoto.com/id/493517086/photo/elegant-woman-exiting-private-jet-airplane.jpg?s=612x612&w=0&k=20&c=afERjJ1w3n6w_AZZ9bY7QEBjy2HVkvulywjrEAX2Lxo=" alt="A large, structured tote bag" class="relative z-10 w-full h-full object-cover">
+                            </div>
+                            <h3 class="mt-6 text-xl uppercase tracking-widest text-brand-bark">Totes</h3>
+                        </a>
+                        <a href="/explore" class="category-circle text-center group fade-in" style="transition-delay: 200ms;">
+                            <div class="relative w-48 h-48 md:w-64 md:h-64 mx-auto rounded-full overflow-hidden bg-brand-petal">
+                                <div class="category-circle-inner absolute inset-0 opacity-70"></div>
+                                <img src="https://media.istockphoto.com/id/1429270931/photo/beautiful-woman-with-brown-hair-holds-black-handbag.jpg?s=612x612&w=0&k=20&c=Hy1jo1_F_lVUe-i0wabvB43J3jfTar2U6wppgx4hNwg=" alt="A stylish crossbody bag on a model" class="relative z-10 w-full h-full object-cover">
+                            </div>
+                            <h3 class="mt-6 text-xl uppercase tracking-widest text-brand-bark">Crossbody</h3>
+                        </a>
+                        <a href="/explore" class="category-circle text-center group fade-in" style="transition-delay: 300ms;">
+                             <div class="relative w-48 h-48 md:w-64 md:h-64 mx-auto rounded-full overflow-hidden bg-brand-petal">
+                                <div class="category-circle-inner absolute inset-0 opacity-70"></div>
+                                <img src="https://media.istockphoto.com/id/1475598737/photo/stylish-beautiful-woman-wearing-blue-scarf-with-yellow-handbag.jpg?s=612x612&w=0&k=20&c=o65Sj3PImyMZNhpEtIGrSj5c0ckoFKGgBgZIcX3z7eQ=" alt="An elegant clutch bag for evenings" class="relative z-10 w-full h-full object-cover">
+                            </div>
+                            <h3 class="mt-6 text-xl uppercase tracking-widest text-brand-bark">Clutches</h3>
+                        </a>
+                    </div>
+                </div>
+            </section>
+        
+            <!-- Newsletter Section -->
+            <section class="bg-brand-petal py-20 md:py-24">
+                <div class="max-w-4xl mx-auto text-center px-6 fade-in">
+                    <h2 class="text-5xl md:text-6xl font-display text-brand-bark">Join The Inner Circle</h2>
+                    <p class="text-lg mt-4 max-w-xl mx-auto font-serif text-brand-bark/80">Receive exclusive access to new collections, private events, and 10% off your first order.</p>
+                    <form class="mt-8 max-w-md mx-auto flex border border-brand-bark/30 p-1 focus-within:border-brand-gold transition" action="/subscribe">
+                        <input type="email" placeholder="Enter your email" class="w-full bg-transparent text-brand-bark px-4 py-3 focus:outline-none placeholder-brand-bark/50">
+                        <button type="submit" class="btn bg-brand-gold text-white hover:bg-brand-bark transition-colors uppercase tracking-wider px-6">Subscribe</button>
+                    </form>
+                </div>
+            </section>
+
+        </main>
+        
+        <!-- Footer -->
+        <footer class="pt-20 pb-10 px-6">
+            <div class="max-w-6xl mx-auto grid md:grid-cols-4 gap-12 text-sm text-center md:text-left">
+                <div>
+                    <h4 class="font-semibold uppercase tracking-wider mb-4">VERLACE</h4>
+                    <ul class="space-y-2 text-brand-bark/70">
+                        <li><a href="/philosophy" class="hover:text-brand-bark">Our Story</a></li>
+                        <li><a href="/journal" class="hover:text-brand-bark">Journal</a></li>
+                        <li><a href="/contact" class="hover:text-brand-bark">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold uppercase tracking-wider mb-4">Shop</h4>
+                    <ul class="space-y-2 text-brand-bark/70">
+                        <li><a href="/collections" class="hover:text-brand-bark">New Arrivals</a></li>
+                        <li><a href="/collections" class="hover:text-brand-bark">Collections</a></li>
+                        <li><a href="/collections" class="hover:text-brand-bark">Gifting</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                     <h4 class="font-semibold uppercase tracking-wider mb-4">Support</h4>
+                     <ul class="space-y-2 text-brand-bark/70">
+                        <li><a href="/shipping-returns" class="hover:text-brand-bark">Shipping & Returns</a></li>
+                        <li><a href="/care-guide" class="hover:text-brand-bark">Care Guide</a></li>
+                        <li><a href="/faqs" class="hover:text-brand-bark">FAQs</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold uppercase tracking-wider mb-4">Follow Us</h4>
+                    <div class="flex space-x-4 justify-center md:justify-start">
+                        <a href="#" class="text-brand-bark/70 hover:text-brand-bark">IG</a>
+                        <a href="#" class="text-brand-bark/70 hover:text-brand-bark">FB</a>
+                        <a href="#" class="text-brand-bark/70 hover:text-brand-bark">PI</a>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-20 text-center text-xs text-brand-bark/50">&copy; 2025 VERLACE. All Rights Reserved.</div>
+        </footer>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // --- Hero Slider ---
+            const slides = document.querySelectorAll('.hero-slide');
+            const prevBtn = document.getElementById('prev-slide');
+            const nextBtn = document.getElementById('next-slide');
+            let currentSlide = 0;
+            let slideInterval = setInterval(nextSlide, 6000); // Auto-play every 6 seconds
+
+            function goToSlide(n) {
+                if (!slides.length) return;
+                slides.forEach(slide => slide.classList.add('opacity-0'));
+                currentSlide = (n + slides.length) % slides.length;
+                slides[currentSlide].classList.remove('opacity-0');
+            }
+
+            function nextSlide() { goToSlide(currentSlide + 1); }
+            function prevSlide() { goToSlide(currentSlide - 1); }
+            
+            function resetInterval() {
+                clearInterval(slideInterval);
+                slideInterval = setInterval(nextSlide, 6000);
+            }
+            
+            if (nextBtn && prevBtn) {
+                nextBtn.addEventListener('click', () => { nextSlide(); resetInterval(); });
+                prevBtn.addEventListener('click', () => { prevSlide(); resetInterval(); });
+            }
+
+            // --- Scroll Animation ---
+            const observer = new IntersectionObserver(entries => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, { threshold: 0.1 });
+            document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+        });
+    </script>
+</body>
+</html>

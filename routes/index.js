@@ -4,10 +4,30 @@ const isLoggedin = require('../middlewares/isLoggedin');
 const productModel = require("../models/product-model");
 const userModel = require('../models/user-model');
 
-router.get('/', (req, res) => {
+router.get('/explore', (req, res) => {
     let error = req.flash("error");
 
     res.render("index", { error });
+})
+router.get('/', (req, res) => {
+
+    let success = req.flash("success")
+    res.render("render", { success });
+})
+router.get('/journal', (req, res) => {
+
+
+    res.render("journal");
+})
+router.get('/philosophy', (req, res) => {
+
+
+    res.render("philosophy");
+})
+router.get('/process', (req, res) => {
+
+
+    res.render("process");
 })
 router.get('/shop', isLoggedin, async (req, res) => {
     let products = await productModel.find();
@@ -34,6 +54,13 @@ router.get('/addToCart/:productid', isLoggedin, async (req, res) => {
     req.flash("success", "product added to cart");
     return res.redirect('/shop')
 })
+router.get('/subscribe', (req, res) => {
+    req.flash("success", "Congrats! You will now recieve latest updates on the registered email");
+    return res.redirect('/')
+})
+
+
+
 router.get('/increaseqty/:productid', isLoggedin, async (req, res) => {
     let user = await userModel.findOne({ email: req.user.email });
     user.cart.push(req.params.productid);

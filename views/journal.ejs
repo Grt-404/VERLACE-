@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Journal - VERLACE</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Inter:wght@400;500;600&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'brand-cream': '#FFFBF5',
+                        'brand-petal': '#F2E6E0',
+                        'brand-gold': '#BBA14F',
+                        'brand-bark': '#5E503F',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Cormorant Garamond', 'serif'],
+                        display: ['Playfair Display', 'serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: theme('fontFamily.sans');
+            background-color: theme('colors.brand-cream');
+            color: theme('colors.brand-bark');
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        .font-display { font-family: theme('fontFamily.display'); }
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 1.2s ease-out, transform 1.2s ease-out;
+        }
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .journal-card-image {
+            transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        .group:hover .journal-card-image {
+            transform: scale(1.08);
+        }
+    </style>
+</head>
+<body class="bg-brand-cream">
+    <div class="bg-gradient-to-b from-brand-petal via-brand-cream to-brand-cream">
+        <!-- Header -->
+       <header class="sticky top-0 w-full z-30 bg-brand-cream/80 backdrop-blur-lg border-b border-brand-petal">
+            <div class="max-w-7xl mx-auto px-6 h-20 flex justify-between items-center">
+                <nav class="hidden md:flex flex-1 justify-start space-x-10 text-sm uppercase tracking-widest">
+                    <a href="/explore" class="hover:text-brand-gold transition">Collections</a>
+                    <a href="/philosophy" class="hover:text-brand-gold transition" >Philosophy</a>
+                </nav>
+                <div class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
+                     <a href="/" class="text-3xl font-serif tracking-wide text-brand-bark">VERLACE</a>
+                </div>
+                <nav class="hidden md:flex flex-1 justify-end space-x-10 text-sm uppercase tracking-widest">
+                     <a href="/journal" class="hover:text-brand-gold transition">Journal</a>
+                     <a href="/explore" class="hover:text-brand-gold transition">Login</a>
+                </nav>
+            </div>
+        </header>
+
+        <main class="py-24 md:py-32">
+            <!-- Journal Header -->
+            <section class="text-center">
+                <div class="max-w-3xl mx-auto px-6 fade-in">
+                    <h1 class="text-5xl md:text-7xl font-display text-brand-bark">From the Journal</h1>
+                    <p class="text-lg font-serif mt-4 text-brand-bark/80">Stories of tradition, purpose, and conscious luxury.</p>
+                </div>
+            </section>
+            
+            <!-- Journal Grid -->
+            <section class="max-w-7xl mx-auto px-6 mt-16 md:mt-24">
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-12">
+                    <!-- Journal Card 1 -->
+                    <a href="#" class="group fade-in">
+                        <div class="bg-brand-petal overflow-hidden">
+                            <img src="https://www.bostonherald.com/wp-content/uploads/migration/2011/03/30/2f5b38_033011guccipw003.jpg?w=535" alt="Hands weaving fabric" class="journal-card-image w-full h-72 object-cover">
+                        </div>
+                        <div class="pt-5">
+                            <p class="text-xs uppercase tracking-widest text-brand-bark/50">Craftsmanship</p>
+                            <h2 class="text-2xl font-display mt-2 hover:text-brand-gold transition">Behind the Weave: Our Artisan Cooperatives</h2>
+                            <p class="font-serif text-brand-bark/70 mt-2">Step inside the workshops where heritage techniques bring our designs to life.</p>
+                        </div>
+                    </a>
+                    <!-- Journal Card 2 -->
+                    <a href="#" class="group fade-in" style="transition-delay: 150ms;">
+                        <div class="bg-brand-petal overflow-hidden">
+                            <img src="https://www.dhobilite.com/images-v2/blog/best-hand-bag-dryclean-in-india.webp" alt="Woman holding a leather handbag" class="journal-card-image w-full h-72 object-cover">
+                        </div>
+                        <div class="pt-5">
+                            <p class="text-xs uppercase tracking-widest text-brand-bark/50">Style Guide</p>
+                            <h2 class="text-2xl font-display mt-2 hover:text-brand-gold transition">Caring for Your Piece: A Guide to Longevity</h2>
+                            <p class="font-serif text-brand-bark/70 mt-2">Ensure your handbag lasts a lifetime with our complete artisan care guide.</p>
+                        </div>
+                    </a>
+                    <!-- Journal Card 3 -->
+                    <a href="#" class="group fade-in" style="transition-delay: 300ms;">
+                        <div class="bg-brand-petal overflow-hidden">
+                            <img src="https://www.shutterstock.com/image-photo/brown-leather-bag-animal-skull-600nw-1875996217.jpg" alt="Sustainable materials" class="journal-card-image w-full h-72 object-cover">
+                        </div>
+                        <div class="pt-5">
+                            <p class="text-xs uppercase tracking-widest text-brand-bark/50">Sustainability</p>
+                            <h2 class="text-2xl font-display mt-2 hover:text-brand-gold transition">The Future of Materials: Our Planet-First Pledge</h2>
+                            <p class="font-serif text-brand-bark/70 mt-2">Learn about the innovative, eco-conscious materials we're using to redefine luxury.</p>
+                        </div>
+                    </a>
+                </div>
+            </section>
+        </main>
+        
+        <!-- Footer -->
+         <footer class="pt-20 pb-10 px-6">
+            <div class="max-w-6xl mx-auto grid md:grid-cols-3 gap-12 text-sm text-center md:text-left">
+                <div>
+                    <h4 class="font-semibold uppercase tracking-wider mb-4">VERLACE</h4>
+                    <ul class="space-y-2 text-brand-bark/70">
+                        <li><a href="/philosophy" class="hover:text-brand-bark">Our Story</a></li>
+                        <li><a href="/journal" class="hover:text-brand-bark">Journal</a></li>
+                        <li><a href="https://www.linkedin.com/in/gurpreet-arora-938328343/" target="_blank" rel="noopener noreferrer" class="hover:text-brand-bark">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold uppercase tracking-wider mb-4">Shop</h4>
+                    <ul class="space-y-2 text-brand-bark/70">
+                        <li><a href="/explore" class="hover:text-brand-bark">New Arrivals</a></li>
+                        <li><a href="/explore" class="hover:text-brand-bark">Collections</a></li>
+                        <li><a href="/explore" class="hover:text-brand-bark">Gifting</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold uppercase tracking-wider mb-4">Follow Us</h4>
+                    <div class="flex space-x-4 justify-center md:justify-start">
+                        <a href="#" class="text-brand-bark/70 hover:text-brand-bark">IG</a>
+                        <a href="#" class="text-brand-bark/70 hover:text-brand-bark">FB</a>
+                        <a href="#" class="text-brand-bark/70 hover:text-brand-bark">PI</a>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-20 text-center text-xs text-brand-bark/50">&copy; 2025 VERLACE. All Rights Reserved.</div>
+        </footer>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const observer = new IntersectionObserver(entries => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, { threshold: 0.1 });
+            document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+        });
+    </script>
+</body>
+</html>

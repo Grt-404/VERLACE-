@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Our Philosophy - VERLACE</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Inter:wght@400;500;600&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'brand-cream': '#FFFBF5',
+                        'brand-petal': '#F2E6E0',
+                        'brand-gold': '#BBA14F',
+                        'brand-bark': '#5E503F',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Cormorant Garamond', 'serif'],
+                        display: ['Playfair Display', 'serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: theme('fontFamily.sans');
+            background-color: theme('colors.brand-cream');
+            color: theme('colors.brand-bark');
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        .font-display { font-family: theme('fontFamily.display'); }
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 1.2s ease-out, transform 1.2s ease-out;
+        }
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body class="bg-brand-cream">
+    <div class="bg-gradient-to-b from-brand-petal via-brand-cream to-brand-cream">
+        <!-- Header -->
+        <header class="sticky top-0 w-full z-30 bg-brand-cream/80 backdrop-blur-lg border-b border-brand-petal">
+            <div class="max-w-7xl mx-auto px-6 h-20 flex justify-between items-center">
+                <nav class="hidden md:flex flex-1 justify-start space-x-10 text-sm uppercase tracking-widest">
+                    <a href="/explore" class="hover:text-brand-gold transition">Collections</a>
+                    <a href="/philosophy"  class="hover:text-brand-gold transition">Philosophy</a>
+                </nav>
+                <div class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
+                     <a href="/" class="text-3xl font-serif tracking-wide text-brand-bark">VERLACE</a>
+                </div>
+                <nav class="hidden md:flex flex-1 justify-end space-x-10 text-sm uppercase tracking-widest">
+                     <a href="/journal" class="hover:text-brand-gold transition">Journal</a>
+                     <a href="/explore" class="hover:text-brand-gold transition">Login</a>
+                </nav>
+            </div>
+        </header>
+
+        <main>
+            <!-- Philosophy Hero -->
+            <section class="py-24 md:py-40 text-center">
+                <div class="max-w-3xl mx-auto px-6 fade-in">
+                    <p class="text-sm uppercase tracking-widest text-brand-bark/50">Our Philosophy</p>
+                    <h1 class="text-5xl md:text-7xl font-display mt-4 text-brand-bark">Fewer, Better Things</h1>
+                </div>
+            </section>
+
+            <!-- Image Banner -->
+            <section class="h-[60vh] bg-cover bg-center bg-fixed" style="background-image: url('https://wallpapers.com/images/hd/women-holding-bags-gucci-4k-1va8qy3y43kwod9u.jpg');">
+            </section>
+
+            <!-- Content Section -->
+            <section class="py-24 md:py-32">
+                <div class="max-w-3xl mx-auto px-6 space-y-8 text-lg font-serif leading-relaxed text-brand-bark/80">
+                    <p class="fade-in">At VERLACE, we believe in a world where luxury is synonymous with purpose. Our philosophy is simple: create fewer, better things. In a world of fleeting trends and mass production, we choose a different path—one of intention, artistry, and lasting beauty. Each handbag we create is not merely an accessory; it is a testament to the hands that crafted it and the values we hold dear.</p>
+                    <p class="fade-in">We are committed to conscious creation. This means sourcing the finest, most sustainable materials and partnering with artisan communities where craft is a cherished heritage. Our designs are born from a desire to create modern heirlooms—pieces that are not just carried for a season, but are cherished for a lifetime, gathering stories and character along the way.</p>
+                    <p class="fade-in">This is luxury with soul. It's the quiet confidence of knowing your bag was made with respect for people and the planet. It's the tangible quality you can feel in every stitch, and the timeless design that transcends trends. Welcome to VERLACE, where every piece is crafted with purpose.</p>
+                </div>
+            </section>
+
+            <!-- Call to Action -->
+            <section class="bg-brand-petal py-20 text-center">
+                 <div class="fade-in">
+                    <h2 class="text-4xl font-display text-brand-bark">Explore Our Craft</h2>
+                    <p class="mt-4 max-w-xl mx-auto font-serif text-brand-bark/80">Discover the journey from raw material to finished masterpiece.</p>
+                    <a href="/process" class="inline-block mt-8 bg-brand-gold text-white px-8 py-4 uppercase text-sm tracking-wider hover:bg-white hover:text-brand-gold border border-brand-gold transition-all duration-300">The Artisan Process</a>
+                </div>
+            </section>
+        </main>
+        
+        <!-- Footer -->
+        <footer class="pt-20 pb-10 px-6">
+            <div class="max-w-6xl mx-auto grid md:grid-cols-3 gap-12 text-sm text-center md:text-left">
+                <div>
+                    <h4 class="font-semibold uppercase tracking-wider mb-4">VERLACE</h4>
+                    <ul class="space-y-2 text-brand-bark/70">
+                        <li><a href="/philosophy" class="hover:text-brand-bark">Our Story</a></li>
+                        <li><a href="/journal" class="hover:text-brand-bark">Journal</a></li>
+                        <li><a href="https://www.linkedin.com/in/gurpreet-arora-938328343/" target="_blank" rel="noopener noreferrer" class="hover:text-brand-bark">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold uppercase tracking-wider mb-4">Shop</h4>
+                    <ul class="space-y-2 text-brand-bark/70">
+                        <li><a href="/explore" class="hover:text-brand-bark">New Arrivals</a></li>
+                        <li><a href="/explore" class="hover:text-brand-bark">Collections</a></li>
+                        <li><a href="/explore" class="hover:text-brand-bark">Gifting</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold uppercase tracking-wider mb-4">Follow Us</h4>
+                    <div class="flex space-x-4 justify-center md:justify-start">
+                        <a href="#" class="text-brand-bark/70 hover:text-brand-bark">IG</a>
+                        <a href="#" class="text-brand-bark/70 hover:text-brand-bark">FB</a>
+                        <a href="#" class="text-brand-bark/70 hover:text-brand-bark">PI</a>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-20 text-center text-xs text-brand-bark/50">&copy; 2025 VERLACE. All Rights Reserved.</div>
+        </footer>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const observer = new IntersectionObserver(entries => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, { threshold: 0.1 });
+            document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+        });
+    </script>
+</body>
+</html>
