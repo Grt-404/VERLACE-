@@ -30,7 +30,7 @@ router.post("/edit", isLoggedin, async (req, res) => {
     user.fullname = req.body.fullname;
     user.email = req.body.email;
     user.contact = req.body.contact;
-    user.save();
+    await user.save();
     res.redirect('/users/myAccount');
 })
 module.exports = router;
