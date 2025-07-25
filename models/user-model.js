@@ -4,11 +4,22 @@ const mongoose = require('mongoose');
 const userSchema = mongoose.Schema({
     fullname: String,
     email: String,
-    password: String,
-    cart: [{
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "product"
-    }],
+    cart: [
+        {
+            product: {
+                type: mongoose.Schema.Types.ObjectId,
+                ref: "Product" // ✅ make sure lowercase 'product' matches your model
+            },
+            quantity: {
+                type: Number,
+                default: 1
+            }
+        }
+    ],
+
+
+
+
     // isadmin: Boolean,
     orders: {
         type: Array,

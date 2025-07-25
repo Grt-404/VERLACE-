@@ -6,7 +6,11 @@ const productSchema = mongoose.Schema({
         default: "/public/images/uploads/default.jpg"
     },
     name: String,
-    price: Number,
+    price: {
+        type: Number,
+        required: true
+    },
+
     discount: {
         type: Number,
         default: 0
@@ -20,4 +24,4 @@ const productSchema = mongoose.Schema({
     }
 
 })
-module.exports = mongoose.model("product", productSchema);
+module.exports = mongoose.model("Product", productSchema);

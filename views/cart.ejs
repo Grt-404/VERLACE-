@@ -1,72 +1,117 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>VERLACE | Cart</title>
-    <link rel="stylesheet" href="/stylesheets/cart.css" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VERLACE | Cart</title>
+  <link rel="stylesheet" href="/stylesheets/cart.css" />
 </head>
-
 <body>
-    <header class="topbar">
-        <div class="logo">
-            <a href="/" class="brand-name">VERLACE</a>
-        </div>
-        <nav class="nav-links">
-            <a href="/shop">Shop</a>
-            <a href="/cart">Cart</a>
-            <a href="/users/myAccount">My Account</a>
-            <a href="/users/logout">Logout</a>
-        </nav>
-    </header>
-
-    <div class="cart-container">
-        <div class="cart-product">
-            <% productsInCart.forEach((product, idx) => { %>
-                <div class="cart-item">
-                    <div class="product-image">
-                        <img src="data:image/jpeg;base64,<%= product.image.toString('base64') %>" alt="<%= product.name %>">
-                    </div>
-                    <div class="product-details">
-                        <h2><%= product.name %></h2>
-                        <div class="quantity">
-                            <a href="#" class="remove-btn">−</a>
-                            <p class="amount">01</p>
-                            <a href="/removeFromCart/idx" class="add-btn">+</a>
-                        </div>
-                        <p class="net-total">Net Total <strong>&#8377;<%= product.price %></strong></p>
-                    </div>
-                </div>
-            <% }) %>
-        </div>
-
-        <div class="cart-summary">
-            <h3>Price Breakdown</h3>
-            <div class="summary-line">
-                <span>Total MRP</span>
-                <span>&#8377;<%= totalMrp %></span>
-            </div>
-            <div class="summary-line">
-                <span>Discount on MRP</span>
-                <span>&#8377;<%= totalDiscount %></span>
-            </div>
-            <div class="summary-line">
-                <span>Platform Fee</span>
-                <span>&#8377;20</span>
-            </div>
-            <div class="summary-line">
-                <span>Shipping Fee</span>
-                <span>FREE</span>
-            </div>
-            <hr />
-            <div class="summary-total">
-                <strong>Total Amount</strong>
-                <strong style="color: #2a8f47">&#8377;<%= cartTotal + 20 %></strong>
-            </div>
-        </div>
+  <header class="topbar">
+    <div class="logo">
+      <a href="/" class="brand-name">VERLACE</a>
     </div>
-    <script src="javascripts/button.js"></script>
-</body>
+    <nav class="nav-links">
+      <a href="/shop">Shop</a>
+      <a href="/cart">Cart</a>
+      <a href="/users/myAccount">My Account</a>
+      <a href="/users/logout">Logout</a>
+    </nav>
+  </header>
 
+  <div class="cart-container">
+    <div class="cart-product">
+      <% 
+        const productCount = {};
+        const validProducts = productsInCart.filter(p => p && p._id);
+
+        validProducts.forEach(p => {
+          const id = String(p._id);
+          productCount[id] = (productCount[id] || 0) + p.quantity;
+        });
+
+        const uniqueProducts = Object.values(
+          validProducts.reduce((acc, product) => {
+            const id = String(product._id);
+            if (!acc[id]) acc[id] = product;
+            return acc;
+          }, {})
+        );
+
+        uniqueProducts.forEach(product => {
+          const id = String(product._id);
+          const quantity = productCount[id];
+      %>
+        <div class="cart-item">
+          <div class="product-image">
+            <% if (product.image && typeof product.image.toString === 'function') { %>
+              <img src="data:image/jpeg;base64,<%= product.image.toString('base64') %>" alt="<%= product.name %>">
+            <% } else { %>
+              <img src="/images/uploads/default.png" alt="<%= product.name %>">
+            <% } %>
+          </div>
+          <div class="product-details">
+            <h2><%= product.name %></h2>
+            <div class="quantity">
+              <a href="/removeFromCart/<%= id %>" class="remove-btn">−</a>
+              <p class="amount"><%= quantity %></p>
+              <a href="/increaseqty/<%= id %>" class="add-btn">+</a>
+            </div>
+            <p class="net-total">
+              Net Total <strong class="net-total-price">&#8377;<%= product.price * quantity %></strong>
+            </p>
+          </div>
+        </div>
+      <% }); %>
+    </div>
+
+    <div class="cart-summary">
+      <h3>Price Breakdown</h3>
+      <div class="summary-line">
+        <span>Total MRP</span>
+        <span id="total-mrp">
+          ₹<%= productsInCart.reduce((sum, p) => sum + (p.price * p.quantity), 0) %>
+        </span>
+      </div>
+      <div class="summary-line">
+        <span>Discount on MRP</span>
+        <span>&#8377;<%= totalDiscount || 0 %></span>
+      </div>
+      <div class="summary-line">
+        <span>Platform Fee</span>
+        <span>&#8377;20</span>
+      </div>
+      <div class="summary-line">
+        <span>Shipping Fee</span>
+        <span>FREE</span>
+      </div>
+      <hr />
+      <div class="summary-total">
+        <strong>Total Amount</strong>
+        <strong id="total-amount" style="color: #2a8f47">
+          ₹<%= productsInCart.reduce((sum, p) => sum + (p.price * p.quantity), 0) + 20 %>
+        </strong>
+      </div>
+    </div>
+  </div>
+
+  <form action="/placeOrder" method="GET" style="text-align: center; margin-top: 30px;">
+    <button type="submit" style="
+      background-color: #000;
+      color: white;
+      padding: 12px 30px;
+      font-size: 16px;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      font-family: 'Georgia', serif;
+      letter-spacing: 0.5px;
+      transition: background-color 0.3s;
+    "
+    onmouseover="this.style.backgroundColor='#333';"
+    onmouseout="this.style.backgroundColor='#000';">
+      Place Order
+    </button>
+  </form>
+</body>
 </html>
