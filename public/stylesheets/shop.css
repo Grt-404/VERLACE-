@@ -243,3 +243,19 @@ body {
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.03);
     border-radius: 16px;
 }
+
+.success {
+    background-color: #d4edda;
+    color: #155724;
+    padding: 12px 24px;
+    border-radius: 8px;
+    margin: 20px auto;
+    width: fit-content;
+    font-weight: 500;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease-in-out;
+}
+
+.success span {
+    font-size: 16px;
+}

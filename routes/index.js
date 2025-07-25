@@ -110,5 +110,13 @@ router.get("/discount", async (req, res) => {
     let success = req.flash("success")
     res.render("shop", { products, success });
 })
+router.get("/admin", isLoggedin, (req, res) => {
+    if (req.user.email === "gurpreetarora1406@gmail.com") {
+        return res.redirect("/owners/admin");
+    }
+    req.flash("success", "SORRY! YOU DON'T HAVE ADMIN PERMISSIONS, PLEASE CONTACT US FOR ANY HELP");
+    return res.redirect('/shop')
+
+})
 
 module.exports = router;
