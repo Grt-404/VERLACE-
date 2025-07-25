@@ -73,5 +73,42 @@ router.get('/removeFromCart/:index', isLoggedin, async (req, res) => {
     user.save()
     res.redirect('/cart')
 })
+router.post("/sort", isLoggedin, async (req, res) => {
+
+    let products = await productModel.find();
+    products.forEach((product) => {
+        if (req.body.sort === "price_asc") {
+            res.redirect("/ascending")
+
+        }
+        if (req.body.sort === "price_desc") {
+            res.redirect("/descending");
+        }
+    })
+
+
+})
+router.get("/ascending", async (req, res) => {
+    let products = await productModel.find().sort({ price: 1 });
+    let success = req.flash("success")
+    res.render("shop", { products, success });
+})
+router.get("/descending", async (req, res) => {
+    let products = await productModel.find().sort({ price: -1 });
+    let success = req.flash("success")
+    res.render("shop", { products, success });
+})
+router.get("/latest", async (req, res) => {
+    let products = await productModel.find().sort({ _id: 1 });
+    let success = req.flash("success")
+    res.render("shop", { products, success });
+})
+router.get("/discount", async (req, res) => {
+    let No_products = await productModel.find();
+    let products = No_products.filter((val) => { return val.discount != 0; }
+    )
+    let success = req.flash("success")
+    res.render("shop", { products, success });
+})
 
 module.exports = router;

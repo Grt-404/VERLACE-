@@ -1,269 +1,245 @@
-/* Reset & Base */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+/* ========== Font Import ========== */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Inter:wght@400;500;600&display=swap');
 
+/* ========== Base Reset ========== */
 body {
-    font-family: 'Georgia', 'Times New Roman', serif;
-    background-color: #faf7f2;
-    color: #3a2e1f;
-    line-height: 1.6;
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+    background: #fefbf6;
+    color: #1e1e1e;
 }
 
-/* Topbar */
+/* ========== Topbar ========== */
 .topbar {
+    background-color: #fff8f0;
+    padding: 24px 48px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #fdfbf7;
-    padding: 20px 50px;
-    border-bottom: 1px solid #eae6df;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
+    border-bottom: 1px solid #f0e8dc;
     position: sticky;
     top: 0;
-    z-index: 10;
+    z-index: 1000;
 }
 
-.logo .brand-name {
+.brand-name {
+    font-family: 'Playfair Display', serif;
     font-size: 26px;
-    font-weight: bold;
-    color: #3a2e1f;
+    font-weight: 500;
+    color: #222;
+    letter-spacing: 1px;
     text-decoration: none;
-    font-family: 'Georgia', serif;
-}
-
-.nav-links {
-    display: flex;
-    gap: 30px;
 }
 
 .nav-links a {
-    font-size: 15px;
+    text-transform: uppercase;
+    font-size: 14px;
+    color: #444;
+    letter-spacing: 1px;
+    margin-left: 32px;
     text-decoration: none;
-    color: #3a2e1f;
     font-weight: 500;
-    position: relative;
-    padding: 6px 4px;
-    transition: color 0.3s ease;
 }
 
 .nav-links a:hover {
-    color: #b48858;
+    color: #000;
 }
 
-.nav-links a::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    bottom: -3px;
-    width: 100%;
-    height: 2px;
-    background-color: #b48858;
-    transform: scaleX(0);
-    transform-origin: right;
-    transition: transform 0.3s ease;
-}
-
-.nav-links a:hover::after {
-    transform: scaleX(1);
-    transform-origin: left;
-}
-
-/* Hero Section */
-.hero-title {
-    font-size: 48px;
+/* ========== Hero Section ========== */
+.hero {
     text-align: center;
-    margin: 40px 0 15px;
-    font-weight: 700;
-    letter-spacing: 1px;
+    padding: 80px 24px 40px;
+    background: linear-gradient(to bottom, #fffefb, #fdf9f3);
+}
+
+.hero-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 42px;
+    font-weight: 600;
+    color: #1a1a1a;
+    margin-bottom: 16px;
+    letter-spacing: 0.5px;
 }
 
 .hero-subtitle {
-    font-size: 18px;
-    text-align: center;
-    max-width: 600px;
-    margin: 0 auto 50px;
-    color: #5e5140;
+    font-size: 16px;
+    color: #7a7a7a;
+    font-weight: 400;
+    max-width: 520px;
+    margin: 0 auto;
 }
 
-/* Main Content Layout */
+/* ========== Layout ========== */
+.shop-container {
+    padding: 0 48px;
+}
+
 .shop-content {
     display: flex;
-    gap: 60px;
-    padding: 60px 80px;
-    flex-wrap: wrap;
+    gap: 36px;
+    padding: 48px 0;
 }
 
-/* Sidebar */
+/* ========== Sidebar ========== */
 .sidebar {
     width: 250px;
-    flex-shrink: 0;
-    background-color: #fdfbf7;
-    padding: 30px;
+    padding: 20px 24px;
+    background-color: #fffdf8;
+    border: 1px solid #eae4d4;
     border-radius: 12px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-    border: 1px solid #e8e4de;
-    height: fit-content;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.03);
 }
 
-.filter-block {
-    margin-bottom: 30px;
+.sidebar h2,
+.sidebar h3 {
+    font-family: 'Inter', sans-serif;
+    margin-top: 0;
+    color: #222;
 }
 
-.filter-block h3 {
-    font-size: 14px;
-    font-weight: 600;
-    margin-bottom: 12px;
-    text-transform: uppercase;
-}
-
-.filter-block ul {
+.sidebar ul {
     list-style: none;
+    padding-left: 0;
+    margin: 0;
 }
 
-.filter-block ul li {
-    padding: 8px 0;
-    cursor: pointer;
+.sidebar li {
+    margin-bottom: 12px;
 }
 
-/* Product Grid */
-.product-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 30px;
-    flex: 1;
+.sidebar a {
+    text-decoration: none;
+    color: #444;
+    font-weight: 500;
+    transition: color 0.2s ease;
 }
 
-/* Product Card */
-.product-card {
+.sidebar a:hover {
+    color: #000;
+}
+
+/* Sort Dropdown */
+.sidebar select {
+    width: 100%;
+    padding: 10px;
+    font-size: 14px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
     background-color: #fff;
+    color: #222;
+    font-weight: 500;
+}
+
+/* ========== Product Grid ========== */
+.product-grid {
+    flex: 1;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 32px;
+}
+
+/* === Product Card Refined === */
+.product-card {
     border-radius: 16px;
-    padding: 24px;
-    border: 1px solid #e3ded6;
+    overflow: hidden;
+    background-color: #fffefc;
     display: flex;
     flex-direction: column;
-    transition: transform 0.3s, box-shadow 0.3s;
-    height: 100%;
+    transition: transform 0.25s ease;
+    box-shadow: 0 14px 26px rgba(0, 0, 0, 0.05);
+    border: 1px solid #f0eae0;
 }
 
 .product-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+    transform: translateY(-6px);
 }
 
-/* Image Container */
+/* === Product Image === */
 .product-img {
-    aspect-ratio: 3 / 4;
     width: 100%;
-    background-color: #f8f5f1;
-    border-radius: 10px;
-    margin-bottom: 20px;
+    background-color: #e2ad00;
     display: flex;
     align-items: center;
     justify-content: center;
-    overflow: hidden;
+    padding: 16px;
+    border-bottom: 1px solid #e8e4de;
 }
 
 .product-img img {
-    width: 60%;
+    max-height: 220px;
+    width: auto;
     height: auto;
     object-fit: contain;
-    transition: transform 0.4s ease;
 }
 
-.product-card:hover .product-img img {
-    transform: scale(1.12);
-}
 
-/* Product Info & Button */
+/* === Product Details Section === */
 .product-details {
-    margin-top: auto;
+    padding: 24px;
+    background: #ffffff;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    border-top: 1px solid #f0eae0;
 }
 
-.product-details h2 {
-    font-size: 16px;
+/* === Product Text === */
+.product-details .text {
+    font-family: 'Playfair Display', serif;
+    color: #1e1e1e;
+}
+
+.product-details h3 {
+    font-size: 18px;
+    margin: 0;
     font-weight: 600;
-    margin-bottom: 4px;
 }
 
 .product-details p {
-    font-size: 14px;
+    margin-top: 6px;
+    font-size: 15px;
+    color: #555;
 }
 
-/* Add to Cart Button */
+/* === Add to Cart Button === */
 .add-btn {
-    width: 44px;
-    height: 44px;
-    border-radius: 50%;
-    background-color: #3a2e1f;
+    background-color: #2d2d2d;
     color: #fff;
+    padding: 8px 12px;
+    border-radius: 50%;
+    font-size: 18px;
+    text-decoration: none;
+    transition: background 0.3s ease;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 26px;
-    font-weight: 500;
-    text-decoration: none;
-    transition: background-color 0.3s, transform 0.2s;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
 }
 
 .add-btn:hover {
-    background-color: #b48858;
-    transform: scale(1.08);
+    background-color: #8b0000;
+    /* deep luxury red */
 }
 
-/* Flash Message */
-.success {
-    background-color: hsl(98, 30%, 73%);
-    color: green;
-    border: 1px solid hsl(133, 70%, 52%);
-    padding: 12px 16px;
-    border-radius: 6px;
-    margin: 16px auto;
-    font-weight: 500;
-    font-size: 16px;
-    box-shadow: 0 2px 6px rgba(0, 255, 0, 0.1);
-    animation: fadeIn 0.4s ease-in-out;
-    max-width: 800px;
-    text-align: center;
+/* === Shop Background Enhancement === */
+.shop-content {
+    background: linear-gradient(to bottom, #fffef8, #fef6eb);
+    border-radius: 24px;
+    padding: 48px;
+    box-shadow: 0 0 12px rgba(0, 0, 0, 0.04);
 }
 
-/* Responsive Fixes */
-@media screen and (max-width: 1200px) {
-    .shop-content {
-        padding: 40px;
-    }
+/* === Product Grid Refined === */
+.product-grid {
+    flex: 1;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 32px;
 }
 
-@media screen and (max-width: 992px) {
-    .shop-content {
-        flex-direction: column;
-    }
-
-    .sidebar {
-        width: 100%;
-        margin-bottom: 40px;
-    }
-}
-
-@media screen and (max-width: 768px) {
-    .product-grid {
-        grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-    }
-
-    .topbar {
-        flex-direction: column;
-        align-items: flex-start;
-        padding: 20px 30px;
-    }
-
-    .nav-links {
-        flex-wrap: wrap;
-        gap: 16px;
-    }
+/* === Sidebar Updated with Color === */
+.sidebar {
+    background: #f8f1e4;
+    border: 1px solid #e0d4bc;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.03);
+    border-radius: 16px;
 }
