@@ -61,10 +61,10 @@ module.exports.logout = async function (req, res) {
     res.redirect('/')
 }
 module.exports.myAccount = async function (req, res) {
-    let { fullname, email, contact, picture } = req.user;
+    let { fullname, email, contact, image } = req.user;
     let user = await userModel.findOne({ email: req.user.email }).populate("cart");
     user.cart.forEach((cartItem) => {
         user.orders.push(cartItem);
     });
-    res.render("Account", { fullname, email, contact, picture, user });
+    res.render("Account", { fullname, email, contact, image, user });
 }
